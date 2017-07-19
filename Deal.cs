@@ -8,23 +8,23 @@ namespace Card_Game
     {
         // Lists for dealer and user hands. Throw away is a list which contains all cards
         //that have been used during a hand so no duplicates will be pulled
-        static List<string> throwAway = new List<string>();
-        static List<string> userHand = new List<string>();
-        static List<string> dealerHand = new List<string>();
+        private static List<string> throwAway = new List<string>();
+        private static List<string> userHand = new List<string>();
+        private static List<string> dealerHand = new List<string>();
 
-        static string newCard;
+        private static string newCard;
 
         // the points for the 21 scoring system
-        static int dealerHandValue = 0;
-        static int userHandValue = 0;
+        private static int dealerHandValue = 0;
+        private static int userHandValue = 0;
 
         // type will pull the cards type eg. Club, spade. ect
-        static Random type = new Random();
+        private static Random type = new Random();
 
         // pulls the actual card value eg. 9, 10, Jack
-        static Random card = new Random();
+        private static Random card = new Random();
 
-        static bool dealing = true;
+        private static bool dealing = true;
 
         public static void Deal(Deck someDeck)
         {
@@ -371,7 +371,7 @@ namespace Card_Game
 
         //This method will check the cards in the dealers hand and assign them a value
         //based on the card
-        public static void DealerValue()
+        private static void DealerValue()
         {
             foreach (string card in dealerHand)
             {
