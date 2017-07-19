@@ -54,6 +54,8 @@ namespace Card_Game
                 System.Threading.Thread.Sleep(1000);
             }
 
+            
+
             //Deals 2 cards to the dealer
             for (int i = 0; dealerHand.Count < 2; i++)
             {
@@ -73,6 +75,7 @@ namespace Card_Game
                 System.Threading.Thread.Sleep(1000);
             }
 
+            
 
 
             // calls the Play method automatically
@@ -87,6 +90,10 @@ namespace Card_Game
             //A loop that continues unless the user specifies not to
             while (dealing)
             {
+
+                //Reorders the users hand to place any aces in the last indexed space
+                ReorderUserHand();
+
                 userHandValue = 0;
 
                 // gets the value of cards in the userHand List
@@ -124,6 +131,10 @@ namespace Card_Game
                     Deal(newDeck);
                 }
 
+                
+
+
+
                 //User controls for hit, stay and quit
                 Console.WriteLine("To hit type \"hit\" to stay type \"stay\" or type \"quit\" to exit.");
                 string userInput = Console.ReadLine();
@@ -147,6 +158,9 @@ namespace Card_Game
                 // if the user inputs stay it will begin the dealers play
                 else if (userInput.ToLower() == "stay")
                 {
+                    //Reorders the dealers hand to place any aces in the last indexed space
+                    ReorderDealerHand();
+
                     // will assign the dealers hand a value
                     dealerHandValue = 0;
                     DealerValue();
@@ -494,7 +508,59 @@ namespace Card_Game
             }
 
         }
-      }
 
+
+        // This reorders the user hand to place aces in the last positions of the indexed List
+        // this solved an issue of aces in the showing before other cards and causing the calue method to count
+        //the ace as an 11 and make the user or dealer bust
+
+        private static void ReorderUserHand()
+        {
+            string tempHolder;
+            for (int i = 0; i < userHand.Count; i++)
+            {
+                if (userHand[i].ToLower().StartsWith("ace"))
+                {
+                    // places the ace in a temp variable
+                    tempHolder = userHand[i];
+
+                    //takes the last item in the list and puts it where the ace was
+                    userHand[i] =  userHand[userHand.Count - 1];
+                    
+                    //places the ace in the last position
+                    userHand[userHand.Count - 1] = tempHolder;
+                    
+                }
+            }
+               
+        }
+
+
+        // This reorders the user hand to place aces in the last positions of the indexed List
+        // this solved an issue of aces in the showing before other cards and causing the calue method to count
+        //the ace as an 11 and make the user or dealer bust
+
+        private static void ReorderDealerHand()
+        {
+            string tempHolder;
+            for (int i = 0; i < dealerHand.Count; i++)
+            {
+                if (dealerHand[i].ToLower().StartsWith("ace"))
+                {
+                    // places the ace in a temp variable
+                    tempHolder = dealerHand[i];
+
+                    //takes the last item in the list and puts it where the ace was
+                    dealerHand[i] = dealerHand[dealerHand.Count - 1];
+
+                    //places the ace in the last position
+                    dealerHand[dealerHand.Count - 1] = tempHolder;
+
+                }
+            }
+
+        }
     }
+
+}
 
