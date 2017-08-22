@@ -10,10 +10,10 @@ namespace Card_Game
     
         // creates a multi dimensional array to hold the card types(Club, spade, ect.)
         //and the card value (Jack, king, 10, ect.)
-    public static string[,] deck = new string[4, 13];
+    protected static string[,] deck = new string[4, 13];
 
-    public static string cardType;
-    public static string cardValue;
+    protected static string cardType;
+    protected static string cardValue;
 
         public Deck()
         {

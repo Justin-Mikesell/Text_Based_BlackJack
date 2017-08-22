@@ -8,21 +8,21 @@ namespace Card_Game
     {
         // Lists for dealer and user hands. Throw away is a list which contains all cards
         //that have been used during a hand so no duplicates will be pulled
-        public static List<string> throwAway = new List<string>();
-        public static List<string> userHand = new List<string>();
-        public static List<string> dealerHand = new List<string>();
+        protected static List<string> throwAway = new List<string>();
+        protected static List<string> userHand = new List<string>();
+        protected static List<string> dealerHand = new List<string>();
 
-        private static string newCard;
+        protected static string newCard;
 
         // the points for the 21 scoring system
-        public static int dealerHandValue = 0;
-        public static int userHandValue = 0;
+        protected static int dealerHandValue = 0;
+        protected static int userHandValue = 0;
 
         // type will pull the cards type eg. Club, spade. ect
-        public readonly static Random type = new Random();
+        protected readonly static Random type = new Random();
 
         // pulls the actual card value eg. 9, 10, Jack
-        public readonly static Random card = new Random();
+        protected readonly static Random card = new Random();
 
         
 
