@@ -10,7 +10,6 @@ namespace Card_Game
         {
             Deck deck = new Deck();
             Dealing.Deal(deck);
-
         }
     }
 }
