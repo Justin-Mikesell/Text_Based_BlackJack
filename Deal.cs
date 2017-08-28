@@ -11,7 +11,6 @@ namespace Card_Game
 {
 
     class Dealing : Deck
-
     {
 
         // Lists for dealer and user hands. Throw away is a list which contains all cards
@@ -21,7 +20,6 @@ namespace Card_Game
         protected static List<string> throwAway = new List<string>();
 
         protected static List<string> userHand = new List<string>();
-
         protected static List<string> dealerHand = new List<string>();
 
 
@@ -30,11 +28,7 @@ namespace Card_Game
 
 
 
-        // the points for the 21 scoring system
-
-        protected static int dealerHandValue = 0;
-
-        protected static int userHandValue = 0;
+        
 
 
 

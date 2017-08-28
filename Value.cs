@@ -13,17 +13,23 @@ namespace Card_Game
     class Value : Dealing
 
     {
+        // the points for the 21 scoring system
+        protected static int dealerHandValue = 0;
+        protected static int userHandValue = 0;
+
         private static int value;
         //This method will check the cards in the users hand and assign them a value
-
         //based on the card
 
-        public static void UserValue()
+        public static int UserValue(List<string> userHand)
         {
+            userHandValue = 0;
 
             foreach (string card in userHand)
-            {
-                //assigns number cards the value associated with the card
+            {            
+
+                //assigns number cards the value associated with the card by parsing the first 2 char 
+                //of the cards name and adding that value to the hand
                 if (int.TryParse(card.Substring(0, 2), out value))
                 {
                     userHandValue += value;
@@ -59,26 +65,27 @@ namespace Card_Game
 
             }
 
+            return userHandValue;
         }
-
-
-
+        
         //This method will check the cards in the dealers hand and assign them a value
-
         //based on the card
 
-        public static void DealerValue()
+        public static int DealerValue(List<string> dealerHand)
         {
+            dealerHandValue = 0;
+
             foreach (string card in dealerHand)
             {
-                //assigns number cards the value associated with the card
+                //assigns number cards the value associated with the card by parsing the first 2 char 
+                //of the cards name and adding that value to the hand
                 if (int.TryParse(card.Substring(0, 2), out value))
                 {
                     dealerHandValue += value;
                 }
 
                 // assigns all face cards and the "10" card a value of 10.
-                if (card.ToLower().StartsWith("jack") || card.ToLower().StartsWith("queen") || card.ToLower().StartsWith("king") || card.StartsWith("10"))
+                if (card.ToLower().StartsWith("jack") || card.ToLower().StartsWith("queen") || card.ToLower().StartsWith("king"))
                 {
                     dealerHandValue += 10;
                 }
@@ -107,8 +114,13 @@ namespace Card_Game
 
             }
 
+            return dealerHandValue;
         }
 
+        public static void PrintUserValue()
+        {
+            Console.WriteLine("Your hand value is: {0} \n", userHandValue);
+        }
     }
 
 }
